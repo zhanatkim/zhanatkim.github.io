@@ -2218,6 +2218,7 @@ button,
 }
 @media (hover: hover) {
   .button:hover:not(.focus-visible) {
+    outline: none;
     background-color: #316dc2;
     color: #ffffff;
   }
@@ -2240,6 +2241,7 @@ button,
   }
 }
 .button.focus-visible:focus {
+  outline: none;
   background-color: #316dc2;
   color: #ffffff;
 }
@@ -2283,6 +2285,7 @@ button,
 }
 @media (hover: hover) {
   .button--no-text:hover:not(.focus-visible) {
+    outline: none;
     background-color: transparent;
   }
   .button--no-text:hover:not(.focus-visible) .button__mark {
@@ -2295,7 +2298,7 @@ button,
             transform: rotate(45deg);
   }
   .button--no-text:hover:not(.focus-visible):active {
-    color: rgba(255, 255, 255, 0.7);
+    background-color: transparent;
   }
   .button--no-text:hover:not(.focus-visible):active .button__mark {
     background-color: #ffffff;
@@ -2303,6 +2306,7 @@ button,
   }
 }
 .button--no-text.focus-visible:focus {
+  outline: none;
   background-color: transparent;
 }
 .button--no-text.focus-visible:focus .button__mark {
@@ -2315,7 +2319,7 @@ button,
           transform: rotate(45deg);
 }
 .button--no-text.focus-visible:focus:active {
-  color: rgba(255, 255, 255, 0.7);
+  background-color: transparent;
 }
 .button--no-text.focus-visible:focus:active .button__mark {
   background-color: #ffffff;
@@ -2444,7 +2448,6 @@ button,
 }
 @media (max-width: 1199px) {
   .modal__wrapper {
-    padding-top: 26.6%;
     padding-top: calc((100vh - 602px) / 2 - 7px);
     padding-left: 16.9%;
     padding-right: 16.8%;
@@ -2746,6 +2749,7 @@ button,
 .custom-textarea--dark textarea {
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: transparent;
+  color: #ffffff;
 }
 @media (hover: hover) {
   .custom-input--dark input:hover:not(.focus-visible),
@@ -2854,13 +2858,17 @@ button,
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
 @media (hover: hover) {
-  .custom-toggle--dark:hover:not(.focus-visible) input + .custom-toggle__icon {
+  .custom-toggle--dark input:hover:not(.focus-visible) {
     outline: none;
+  }
+  .custom-toggle--dark input:hover:not(.focus-visible) + .custom-toggle__icon {
     border: 1px solid #ffffff;
   }
 }
-.custom-toggle--dark.focus-visible:focus input + .custom-toggle__icon {
+.custom-toggle--dark input.focus-visible:focus {
   outline: none;
+}
+.custom-toggle--dark input.focus-visible:focus + .custom-toggle__icon {
   border: 1px solid #ffffff;
 }
 .custom-toggle--dark input:checked + .custom-toggle__icon {
@@ -2872,19 +2880,23 @@ button,
   color: #316dc2;
 }
 @media (hover: hover) {
-  .custom-toggle--dark:hover:not(.focus-visible) input:checked + .custom-toggle__icon {
+  .custom-toggle--dark input:checked + .custom-toggle__icon:hover:not(.focus-visible) {
     outline: none;
+  }
+  .custom-toggle--dark input:checked + .custom-toggle__icon:hover:not(.focus-visible) + .custom-toggle__icon {
     background-color: transparent;
   }
-  .custom-toggle--dark:hover:not(.focus-visible) input:checked + .custom-toggle__icon svg {
+  .custom-toggle--dark input:checked + .custom-toggle__icon:hover:not(.focus-visible) + .custom-toggle__icon svg {
     color: #ffffff;
   }
 }
-.custom-toggle--dark.focus-visible:focus input:checked + .custom-toggle__icon {
+.custom-toggle--dark input:checked + .custom-toggle__icon.focus-visible:focus {
   outline: none;
+}
+.custom-toggle--dark input:checked + .custom-toggle__icon.focus-visible:focus + .custom-toggle__icon {
   background-color: transparent;
 }
-.custom-toggle--dark.focus-visible:focus input:checked + .custom-toggle__icon svg {
+.custom-toggle--dark input:checked + .custom-toggle__icon.focus-visible:focus + .custom-toggle__icon svg {
   color: #ffffff;
 }
 .custom-toggle:disabled {
@@ -4735,6 +4747,7 @@ button,
 }
 @media (hover: hover) {
   .swiper-button:hover:not(.focus-visible) {
+    outline: none;
     background-color: #ffffff;
   }
   .swiper-button:hover:not(.focus-visible):active {
@@ -4742,6 +4755,7 @@ button,
   }
 }
 .swiper-button.focus-visible:focus {
+  outline: none;
   background-color: #ffffff;
 }
 .swiper-button.focus-visible:focus:active {
@@ -6217,6 +6231,54 @@ button,
 }
 .contacts__item p a {
   color: #ffffff;
+}
+@media (hover: hover) {
+  .contacts__item p a[href^="tel:"]:hover:not(.focus-visible),
+.contacts__item p a[href^="mailto:"]:hover:not(.focus-visible) {
+    position: relative;
+    outline: none;
+  }
+  .contacts__item p a[href^="tel:"]:hover:not(.focus-visible)::after,
+.contacts__item p a[href^="mailto:"]:hover:not(.focus-visible)::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: -5px;
+    background-color: #ffffff;
+  }
+  .contacts__item p a[href^="tel:"]:hover:not(.focus-visible):active,
+.contacts__item p a[href^="mailto:"]:hover:not(.focus-visible):active {
+    opacity: 0.8;
+  }
+  .contacts__item p a[href^="tel:"]:hover:not(.focus-visible):active::after,
+.contacts__item p a[href^="mailto:"]:hover:not(.focus-visible):active::after {
+    display: none;
+  }
+}
+.contacts__item p a[href^="tel:"].focus-visible:focus,
+.contacts__item p a[href^="mailto:"].focus-visible:focus {
+  position: relative;
+  outline: none;
+}
+.contacts__item p a[href^="tel:"].focus-visible:focus::after,
+.contacts__item p a[href^="mailto:"].focus-visible:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -5px;
+  background-color: #ffffff;
+}
+.contacts__item p a[href^="tel:"].focus-visible:focus:active,
+.contacts__item p a[href^="mailto:"].focus-visible:focus:active {
+  opacity: 0.8;
+}
+.contacts__item p a[href^="tel:"].focus-visible:focus:active::after,
+.contacts__item p a[href^="mailto:"].focus-visible:focus:active::after {
+  display: none;
 }
 @media (max-width: 1199px) {
   .contacts__item {
